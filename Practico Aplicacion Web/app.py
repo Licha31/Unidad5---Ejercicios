@@ -85,10 +85,14 @@ def informe():
     curso = Curso.query.filter_by(id=idcurso).first()
     alumnos = Estudiante.query.all()
     asistencia=Asistencia.query.all()
+    correoPrecep = session.get("preceptor")
+    preceptor = Preceptor.query.filter_by(correo=correoPrecep).first()
     print(curso)
     print(alumnos)
     print(asistencia)
-    return render_template('listarDatos.html', curso=curso, alumnos=alumnos, asistencia=asistencia)           
+    print(correoPrecep)
+    print(preceptor)
+    return render_template('listarDatos.html', curso=curso, alumnos=alumnos, asistencia=asistencia,preceptor=preceptor)           
              
 if __name__ == '__main__':
     with app.app_context():
